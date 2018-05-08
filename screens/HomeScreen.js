@@ -9,6 +9,7 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    // placing images on the homescreen
     return (
       <View>
         <ScrollView>
@@ -42,11 +43,13 @@ export default class HomeScreen extends React.Component {
     );
   }
 
+  // function to navigate to instagram account on press
   _InstagramPress = () => {
     WebBrowser.openBrowserAsync('https://www.instagram.com/miamiuniversityfitness/');
   };
 }
 
+// styling for components
 const styles = StyleSheet.create({
   container: {
     flex: 1,

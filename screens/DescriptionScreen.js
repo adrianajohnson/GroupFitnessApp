@@ -100,11 +100,16 @@ export default class DescriptionScreen extends React.Component {
     title: 'Class Descriptions',
   };
 
+// Use this function to search through the array of data. 
+// The filter will disregaurd white space and capitalization.
   SearchFilterFunction(text) {
     const newData = data.filter(function(item){
-      const classData = item.class.toUpperCase()
-      const descriptionData = item.description.toUpperCase()
-      const textData = text.toUpperCase()
+      var classData = item.class.toUpperCase()
+      classData = classData.trim()
+      var descriptionData = item.description.toUpperCase()
+      descriptionData = descriptionData.trim()
+      var textData = text.toUpperCase()
+      textData = textData.trim()
         return classData.indexOf(textData) > -1 || descriptionData.indexOf(textData) > -1
     })
     this.setState({
@@ -113,6 +118,7 @@ export default class DescriptionScreen extends React.Component {
     })
   }
 
+  // function for getting the data from the array for each class name and description
   renderRow(rowData){
     return (
         <TouchableHighlight>
@@ -125,6 +131,7 @@ export default class DescriptionScreen extends React.Component {
 }
 
 render() {
+  // creating layout for each class name and description
   return (
   <View style={styles.container}>
       <View style={styles.searchContainer}>
@@ -144,6 +151,7 @@ render() {
   );
 }}
 
+// styling for components 
 const styles = StyleSheet.create({
   container: {
     flex: 1,

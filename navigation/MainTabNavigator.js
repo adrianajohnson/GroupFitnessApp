@@ -12,9 +12,9 @@ import PricingScreen from '../screens/PricingScreen';
 
 export default TabNavigator(
   {
+    // setting tab navigation for each screen
     Home: {
       screen: HomeScreen,
-      
     },
     Schedule: {
       screen: ScheduleScreen,
@@ -27,12 +27,14 @@ export default TabNavigator(
     },
   },
   {
+    // styling the header
     navigationOptions: ({ navigation }) => ({
       headerTintColor: 'white',
       headerStyle: {backgroundColor: '#bc1616'},
       tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
         let iconName;
+        // setting icons for the tab navigation
         switch (routeName) {
           case 'Home':
 
@@ -58,6 +60,7 @@ export default TabNavigator(
         );
       },
     }),
+    // styling the bottom tab navigation
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     animationEnabled: false,

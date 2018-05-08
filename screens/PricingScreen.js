@@ -7,6 +7,7 @@ export default class PricingScreen extends React.Component {
   };
 
   render() {
+    // layout for pricing options
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -35,6 +36,7 @@ export default class PricingScreen extends React.Component {
   }
 }
 
+// styling for components
 const styles = StyleSheet.create({
   container: {
     flex: 1,

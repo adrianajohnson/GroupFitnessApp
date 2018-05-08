@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, ListView, View, FlatList, TouchableHighli
 import { Ionicons } from '@expo/vector-icons';
 import Modal from "react-native-modal";
 
+// descriptions for each class
 const CardioBlast = 'Prepare to sweat with forms of cardio ranging from cycling, rowing, using BOSUs, jump ropes, and various other pieces of equipment. The sky is the limit with this class! If you like variety, this class is for you!'
 const Spinning = 'The Spinning® program is the original and most popular group cycling class. A motivating group environment, intense training and music that begs your legs to pedal. You’ll find yourself having a blast while you ride your way to a leaner, stronger body. Towel and water bottle required for all classes. New patrons are encouraged to arrive at least 10 minutes prior to the start of class to go over correct bike set-up with the instructor.'
 const Kickboxing = 'Kick and punch towards your goals. Juice up speed, strength, and agility with this intense and fun class. A high energy blend of kicks and punches built into combinations and set to upbeat music. This “kick-butt” workout is a great blend of martial arts, boxing, and cardio.'
@@ -25,6 +26,7 @@ const HardCoreAbs = '20 minutes only. Feel like you can’t do another sit-up? B
 const TabataBootCamp = 'Based on the popular Tabata training practice, this high-intensity interval training class (HIIT) involves a repeating pattern of 20 seconds of maximum cardio work followed by 10 seconds of rest. A wide-array of exercises are included that can be modified to accommodate all fitness levels. Get ready to sweat and push it to the next max!'
 const TotalBodyTone = 'This full body, non-aerobic class is designed to improve muscular strength and endurance using body bars, BOSU balance trainers, dumbbells, stability balls, resistance tubes and more! Modifications will be given to accommodate all fitness levels.'
 
+// array containing information for class schedule
 const data = [
   {
     info: 'SUNDAY\n10:15-11:15 a.m.\nVinyasa Yoga 1\nRoom: B\nInstructor: Jill',
@@ -448,14 +450,19 @@ export default class ScheduleScreen extends React.Component {
     title: 'Schedule',
   };
 
+  // get the search icon
   renderIcon = () => {
     return iconName = Platform.OS === 'ios' ? 'ios-search' : 'md-search';
   }
 
+  // Use this function to search through the array of data. 
+  // The filter will disregaurd white space and capitalization.
   SearchFilterFunction(text) {
     const newData = data.filter(function(item){
-      const itemData = item.info.toUpperCase()
-      const textData = text.toUpperCase()
+      var itemData = item.info.toUpperCase()
+      itemData = itemData.trim()
+      var textData = text.toUpperCase()
+      textData = textData.trim()
       return itemData.indexOf(textData) > -1
     })
     this.setState({
@@ -464,6 +471,7 @@ export default class ScheduleScreen extends React.Component {
     })
   }
 
+  // creating link for class description pop-up modual
   renderRow(rowData){
     return (
         <TouchableHighlight>
@@ -477,6 +485,7 @@ export default class ScheduleScreen extends React.Component {
     )
 }
 
+  // creating search bar and schedule layout
   render() {
     return (
     <View style={styles.container}>
@@ -498,6 +507,7 @@ export default class ScheduleScreen extends React.Component {
   }
 }
 
+// styling for components
 const styles = StyleSheet.create({
   container: {
     flex: 1,
